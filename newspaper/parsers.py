@@ -66,6 +66,7 @@ class Parser(object):
             if html.startswith('<?'):
                 html = re.sub(r'^\<\?.*?\?\>', '', html, flags=re.DOTALL)
             cls.doc = lxml.html.fromstring(html)
+            # print('this is the doc {}'.format(cls.doc))
             return cls.doc
         except Exception:
             log.warn('fromstring() returned an invalid string: %s...', html[:20])
