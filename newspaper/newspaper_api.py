@@ -21,7 +21,8 @@ def parse_html():
 	item = dict()
 	item['url'] = article.url
 	item['title'] = article.title
-	item['published_date'] = article.publish_date.strftime('%Y/%m/%d')
+	if(article.published_date is not None):
+		item['published_date'] = article.publish_date.strftime('%Y/%m/%d')	
 	item['text'] = article.text
 	# item['html'] = htmlmin.minify(article.html, remove_empty_space=True)
 	item['movies'] = list(article.movies)
