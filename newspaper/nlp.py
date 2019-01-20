@@ -19,6 +19,8 @@ ideal = 20.0
 
 stopwords = set()
 
+ln = ''
+
 def load_stopwords(language):
     """ 
     Loads language-specific stopwords for keyword selection
@@ -30,6 +32,7 @@ def load_stopwords(language):
     # can be changed with the tests
     if language == 'en':
         stopwordsFile = settings.NLP_STOPWORDS_EN
+        ln ='en'
     else:
         stopwordsFile = path.join(settings.STOPWORDS_DIR,\
                                   'stopwords-{}.txt'.format(language))
@@ -153,14 +156,17 @@ def keywords(text):
 def split_sentences(text):
     """Split a large string into sentences
     """
-    # import nltk.data
-    # tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+    if(ln == 'en'):
 
-    # sentences = tokenizer.tokenize(text)
-
+        import nltk.data
+        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
+        sentences = tokenizer.tokenize(text)
+        sentences = [x.replace('\n', '') for x in sentences if len(x) > 10]
+        return sentences
+    
     import re 
     sentences = text.split('।')
-    # sentences = filter(None, re.split("[, \-!?।]+", text))
+
     sentences = [x.replace('\n', '') for x in sentences if len(x) > 10]
     # print('sentences are : {}'.format(sentences))
     return sentences
