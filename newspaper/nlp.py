@@ -113,7 +113,7 @@ def split_words(text):
     """Split a string into array of words
     """
     try:
-        text = re.sub(r'[^\p{Punct} ]', '', text)  # strip special chars
+        text = re.sub(r'[^\w ]', '', text)  # strip special chars
         return [x.strip(' ') for x in text.split()]
     except TypeError:
         return None
