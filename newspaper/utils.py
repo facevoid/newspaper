@@ -37,7 +37,7 @@ class FileHelper(object):
             dirpath = os.path.abspath(os.path.dirname(__file__))
             # dirpath = '/newspaper/'
             path = os.path.join(dirpath, 'resources', filename)
-            print('path {} '.format(path))
+            # print('path {} '.format(path))
         else:
             path = filename
         try:
