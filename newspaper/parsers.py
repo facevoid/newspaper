@@ -40,6 +40,8 @@ class Parser(object):
 
     @classmethod
     def css_select(cls, node, selector):
+        # from lxml import etree
+        # print(etree.tostring(node, pretty_print=True))
         return node.cssselect(selector)
 
     @classmethod
