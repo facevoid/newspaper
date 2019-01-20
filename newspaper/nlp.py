@@ -113,8 +113,8 @@ def split_words(text):
     """Split a string into array of words
     """
     try:
-        text = re.sub(r'[^\w ]', '', text)  # strip special chars
-        return [x.strip('.').lower() for x in text.split()]
+        text = re.sub(r'[^\p ]', '', text)  # strip special chars
+        return [x.strip(' ') for x in text.split()]
     except TypeError:
         return None
 
@@ -125,8 +125,10 @@ def keywords(text):
     sorts them in reverse natural order (so descending) by number of
     occurrences.
     """
-    NUM_KEYWORDS = 10
+    # print(text)
+    NUM_KEYWORDS = 5
     text = split_words(text)
+    print(text)
     # of words before removing blacklist words
     if text:
         num_words = len(text)
