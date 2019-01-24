@@ -113,7 +113,7 @@ def split_words(text):
     """Split a string into array of words
     """
     try:
-        text = re.sub(r'[^\w ]', '', text)  # strip special chars
+        text = re.sub(r'[{Digit}{Pd}{Pi}{Pe}।,:০১২৩৪৫৬৭৮৯]', '', text)  # strip special chars
         return [x.strip(' ') for x in text.split()]
     except TypeError:
         return None
@@ -128,7 +128,7 @@ def keywords(text):
     # print(text)
     NUM_KEYWORDS = 5
     text = split_words(text)
-    print(text)
+    # print(text)
     # of words before removing blacklist words
     if text:
         num_words = len(text)
